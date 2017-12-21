@@ -1,14 +1,14 @@
 <template>
   
   <div id="app">
-    <div id="map"></div>
+<!--    <div id="map"></div>-->
     <div id="left">
-      <h3>Geohash: {{ loadingMessage }}</h3>
+      <h3>Geohash: {{ geohash }}</h3>
       <h3>Coordinates: {{ coordinates }}</h3>
-      <h3>Current Thought: {{ currentThought }}</h3>
+      <h3 v-if="currentThought">Current Thought: {{ currentThought }}</h3>
 
-      <input type="text" v-model.trim="messageInput" @keyup.enter="send(messageInput)">
-      <button v-on:click="send(messageInput)">Save</button>
+      <input type="text" v-model.trim="currentThought" @keyup.enter="send(currentThought)">
+      <button v-on:click="send(currentThought)">Save</button>
     </div>
     <div id="right">
       <table>
@@ -24,16 +24,14 @@
 
 import axios from 'axios'
 import Geohash from 'latlon-geohash'
-import GoogleMapsLoader from 'google-maps'
 
 export default {
   name: 'app',
   data () {
     return {
-      messageInput: "",
       coordinates: "loading ...",
       geohash: "loading ...",
-      currentThought: "<empty>",
+      currentThought: "",
       geothoughts: []
     }
   },
@@ -41,10 +39,6 @@ export default {
     //this.db = "https://9ujv6aedjk.execute-api.us-east-1.amazonaws.com/prod/geothought"
     this.getGeoHash()
     this.getAllGeoThoughts()
-    
-    GoogleMapsLoader.load(function(google) {
-      new google.maps.Map(el, options)
-    })
   }, 
   methods: {
     getGeoHash() {
@@ -71,9 +65,7 @@ export default {
         this.errors.push(e)
       })
     },
-    send(messageInput) {
-      console.log(messageInput)
-      this.currentThought = messageInput
+    send(currentThought) {
       var data = {
         "coordinates": this.coordinates,
         "geohash": this.geohash,
@@ -82,6 +74,7 @@ export default {
       console.log(data)
       axios.post(`https://413nf2l0af.execute-api.ap-northeast-1.amazonaws.com/prod/geothoughts`, data)
       .then(response => {
+        this.currentThought = ""
         this.getAllGeoThoughts()
       })
       .catch(e => {
