@@ -3,17 +3,14 @@
   <head>
     <meta charset="utf-8">
     <title>geothought</title>
-    <style>
-    #map {
-        height: 300px;
-        width: 100%;
-    }
-    </style>
   </head>
   <body>
-    <div id="map"></div>      
+<!--    <div id="map"></div>-->
     <div id="app"></div>
     <script src="/dist/build.js"></script>
+
+    <!--
+    
     <script>
         function initMap() {
             var hong_kong = {lat: 22.442029, lng: 114.094303};
@@ -196,7 +193,7 @@
             var mapOptions = {
                 center: hong_kong,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
-                zoom:13,
+                zoom:12,
                 backgroundColor:"#eeeeee",
 
                 // REMOVE ALL THE CONTROLS EXCEPT ZOOM
@@ -220,8 +217,12 @@
             });
         }
     </script>
+    
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBK5wYFm-lmxYiJ8eLg4b5FhMBVDNalIs&callback=initMap">
-    </script>      
+    </script> 
+    
+    -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBK5wYFm-lmxYiJ8eLg4b5FhMBVDNalIs"></script>
   </body>
 </html>

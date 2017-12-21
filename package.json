@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "google-maps": "^3.2.1",
     "latlon-geohash": "^1.1.0",
-    "vue": "^2.4.4"
+    "vue": "^2.4.4",
+    "vue2-google-maps": "^0.8.4"
   },
   "browserslist": [
     "> 1%",
