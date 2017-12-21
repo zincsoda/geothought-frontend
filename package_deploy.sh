@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#npm run build
+npm run build
 
 if [ -z "${AWS_CLI_PROFILE}" ]; then
     aws_cli_profile=""
