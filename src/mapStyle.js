@@ -1,4 +1,4 @@
-var mapStyle = [
+export const grayMapStyle = [
 {
     "featureType": "water",
     "elementType": "geometry",
